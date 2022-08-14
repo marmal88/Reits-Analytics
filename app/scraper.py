@@ -7,17 +7,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
 
-url = "https://www.dbs.com/in/treasures/rates-online/foreign-currency-foreign-exchange.page"
+URL = "https://www.dbs.com/in/treasures/rates-online/foreign-currency-foreign-exchange.page"
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-driver.get(url)
+driver.get(URL)
 
 # Getting Date and Time
 date_detail = driver.find_element(By.ID, "mainCurrency").text
 s = date_detail.split(' ')
 
 date = s[3]
-updated = s[-1]
+time = s[-1]
 
 # Header Names
 header = driver.find_elements(By.XPATH, "//table[@class='sc-dxgOiQ dzHkKC tbl-primary mBot-16']/thead/tr/th")
@@ -44,6 +44,6 @@ for i in range (1, num_col + 1):
 df = pd.DataFrame(data=results, columns=col_names)
 
 df["Date"] = date
-df["Time"] = updated
+df["Time"] = time
 
-print(df)
+df.to_csv("data/output.csv", index=False)
