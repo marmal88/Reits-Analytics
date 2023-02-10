@@ -7,16 +7,22 @@ This is a web scraping project to automate repetitive time series data collectio
 Create necessary virtual environment and download necessary packages using:
 
 ```bash
-conda activate py-webscraper
+conda create --name reits-analytics python=3.11
+conda activate reit-analytics
 pip install -r requirements.txt
 ```
 
 To run the scraper, input below into the terminal:
 
 ```bash
-python app/scraper.py
+python -m src.scraper
 ```
 
+To run dashboard, input below into the terminal:
+
+```bash
+
+```
 
 ## Folder Structure
 
