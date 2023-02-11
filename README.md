@@ -22,7 +22,7 @@ In this project, I would like to showcase the
 ---
 ## 1. General Instructions
 
-Create necessary virtual environment and download necessary packages using:
+Create virtual environment and download necessary packages using:
 
 ```bash
 conda create --name reits-analytics python=3.11
@@ -33,7 +33,7 @@ pip install -r requirements.txt
 To view dashboard, please follow the instructions under [API Keys](#api-keys) before keying in the following commands:
 
 ```bash
-
+python -m src.main
 ```
 ---
 ### 1.1 API keys

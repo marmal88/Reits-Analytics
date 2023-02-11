@@ -1,32 +1,50 @@
 import numpy as np
+import plotly.express as px
+from dotenv import load_dotenv
+import os
+import plotly.graph_objects as go
+
+import dash
+from dash import html, dcc
+from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
+
+from src.app_func.pdf import Pdf_Scraper
 
 
-from src.app_func.pdf import pdf_scraper
-from src.app_func.dbs_fx import WebScraper
-from src.app_func.api import google_api
+PDF = "/home/oem/Documents/coding/personal/Reits-Analytics/data/Ascendas-Reit-Annual-Report-2021.pdf"
 
+scraper = Pdf_Scraper()
 
-# URL = "https://www.dbs.com/in/treasures/rates-online/foreign-currency-foreign-exchange.page"
+bizpark_table = scraper.get_table(PDF, 72)
+buildings_df = scraper.get_bizpark_df(bizpark_table)
 
-# exchange_df = WebScraper(URL).get_exchange()
+# print(buildings_df["gross_revenue_(SGD:Mil)"])
 
-pdf = "/home/oem/Documents/coding/personal/Reits-Analytics/data/Ascendas-Reit-Annual-Report-2021.pdf"
+load_dotenv()
+api_key = os.getenv("MAPBOX_KEY")
 
-buildings_df = pdf_scraper(pdf)
-
-buildings_df["address_cord"] = buildings_df["address"].apply(
-    lambda x: google_api().return_lat_long(x, "Singapore")
+fig = px.scatter_mapbox(
+    buildings_df,
+    title="Business and Science Parks",
+    lon="longitude",
+    lat="lattitude",
+    color="property",
+    size="gross_revenue_(SGD:Mil)",
+    zoom=10,
+    height=700,
+    width=1500,
 )
-buildings_df["property_cord"] = buildings_df["property"].apply(
-    lambda x: google_api().return_lat_long(x, "Singapore")
+
+fig.update_layout(
+    mapbox_style="carto-positron",
+    mapbox_accesstoken=api_key,
 )
+fig.update_layout(autosize=True, margin={"r": 10, "t": 50, "l": 10, "b": 10})
 
-buildings_df["lat_lng"] = np.where(
-    buildings_df["address_cord"].isna(),
-    buildings_df["property_cord"],
-    buildings_df["address_cord"],
-)
+app = dash.Dash()
+app.layout = html.Div([dcc.Graph(figure=fig)])
 
-buildings_df.drop(columns=["address_cord", "property_cord"], inplace=True)
 
-print(buildings_df.head())
+if __name__ == "__main__":
+    app.run_server(debug=True)

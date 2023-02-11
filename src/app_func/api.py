@@ -10,8 +10,8 @@ class google_api:
         load_dotenv()
         self.api_key = os.getenv("GOOGLE_KEY")
 
-    def return_lat_long(self, query, country):
-        query = self.custom_query(query, country)
+    def return_lat_long(self, query, country, loc_dict):
+        query = self.custom_query(query, country, loc_dict)
         path = f"https://maps.googleapis.com/maps/api/geocode/json?address={query}?,+CA&key={self.api_key}"
         response = requests.get(path)
         jsonresponse = response.json()
@@ -21,9 +21,9 @@ class google_api:
             return lat, long
         return None
 
-    def custom_query(self, query, country):
-        if query == "1, 3 & 5 Changi Business Park Crescent":
-            query = "3 Changi Business Park Crescent"
+    def custom_query(self, query, country, loc_dict):
+        if query in loc_dict:
+            query = loc_dict.get(query)
         query = query + f", {country}"
         query = query.replace(" ", "%20")
 
