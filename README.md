@@ -4,15 +4,14 @@ Real Estate Investment Trusts are a popular investment choice amongst the retail
 
 Ascendas Reit is unique as an industrial reit, as it has an extensive range of industrial properties (business parks to flatted factories) both within Singapore and across the world.
 
-In this project, I would like to showcase the 
+In this project, I would like to showcase:
 
 
 
 
 ---
-## Table of Contents
+
 - [REITs Analytics](#reits-analytics)
-  - [Table of Contents](#table-of-contents)
   - [1. General Instructions](#1-general-instructions)
     - [1.1 API keys](#11-api-keys)
     - [1.2 Folder Structure](#12-folder-structure)
