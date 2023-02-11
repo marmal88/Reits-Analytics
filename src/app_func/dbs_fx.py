@@ -7,16 +7,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
 
-URL = "https://www.dbs.com/in/treasures/rates-online/foreign-currency-foreign-exchange.page"
-
-
 class WebScraper:
     def __init__(self, URL):
         self.url = URL
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.driver.get(URL)
 
-    def get_exchange(self):
+    def get_exchange(self, save=False):
         # Getting Date and Time
         date_detail = self.driver.find_element(By.ID, "mainCurrency").text
         elements = date_detail.split(" ")
@@ -65,6 +62,7 @@ class WebScraper:
         df["Date"] = date
         df["Time"] = time
 
-        df.to_csv("data/output.csv", index=False)
+        if save:
+            df.to_csv("data/output.csv", index=False)
 
         return df

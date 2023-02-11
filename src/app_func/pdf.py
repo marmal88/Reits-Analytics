@@ -1,8 +1,6 @@
 import tabula
 import pandas as pd
 
-pdf = "/home/oem/Documents/coding/personal/Reits-Analytics/data/Ascendas-Reit-Annual-Report-2021.pdf"
-
 
 def pdf_scraper(pdf):
     tables = tabula.read_pdf(pdf, pages=[72])
