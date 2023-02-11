@@ -17,6 +17,7 @@ In this project, I would like to showcase the
     - [1.1 API keys](#11-api-keys)
     - [1.2 Folder Structure](#12-folder-structure)
   - [2. Data Ingestion Pipeline](#2-data-ingestion-pipeline)
+  - [3. Navigation](#3-navigation)
 
 
 ---
@@ -97,5 +98,7 @@ graph LR;
  H([Mapbox API</br>Stylistic changes to plot])-->G
 ```
  
-
 ---
+## 3. Navigation
+
+![Image](/home/oem/Documents/coding/personal/Reits-Analytics/assets/geojson.png "Sketchup of graph plot")
