@@ -101,4 +101,8 @@ graph LR;
 ---
 ## 3. Navigation
 
-![Image](/home/oem/Documents/coding/personal/Reits-Analytics/assets/geojson.png "Sketchup of graph plot")
+Front end navigation should allow the user to view the various location of the reit properties as well as valuations by size of circle.
+
+
+![](./assets/geojson.png "sketchup of plot")
+
