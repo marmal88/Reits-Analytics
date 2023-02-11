@@ -37,7 +37,7 @@ fig = px.scatter_mapbox(
 )
 
 fig.update_layout(
-    mapbox_style="carto-positron",
+    mapbox_style="mapbox://styles/mapbox/navigation-night-v1",
     mapbox_accesstoken=api_key,
 )
 fig.update_layout(autosize=True, margin={"r": 10, "t": 50, "l": 10, "b": 10})
@@ -47,4 +47,4 @@ app.layout = html.Div([dcc.Graph(figure=fig)])
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(port=8050, debug=True)
