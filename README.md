@@ -113,10 +113,10 @@ graph LR;
 
 Unlike other types of data vizualization (barplot, pie charts, etc) geo-location data is best presented given the geographical context. However, maps unlike other data vizualization are not easily customizable.
 
-Mapbox offeres an alternative to the static map graphs available by giving users the ability to customize the visible artifacts in the map. Even fine grain details like including specific traffic/congestion data are available.
+Mapbox offeres an alternative to the static map graphs available by giving users the ability to customize the visible artifacts in the map. Even fine grain details like including specific traffic/congestion data are available. By signing up with mapbox one can easily customize and save the specific type of map for their use case and render them by using the specified API key unique to the user.
 
-By signing up with mapbox one can easily customize and save the specific type of map for their use case and render them by using the specified API key unique to the user.
-
+To understand how mapbox enables the introduction of "living maps" please watch this short presentation:
+- [The Future of Mapping Data with Margaret Lee (GovSummit 19)](https://www.youtube.com/watch?v=2qF83eAPrRA)
 
 ---
 ## 4. Navigation
